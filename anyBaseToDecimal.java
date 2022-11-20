@@ -3,10 +3,11 @@ import java.util.*;
 
 public class anyBaseToDecimal {
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        int b = scn.nextInt();
-        System.out.println(anyBaseToDecimal1(n,b));
+        try( Scanner scn = new Scanner(System.in) ){
+            int n = scn.nextInt();
+            int b = scn.nextInt();
+            System.out.println(anyBaseToDecimal1(n,b));
+        }
     }
 
     public static int anyBaseToDecimal1(int n , int b ){

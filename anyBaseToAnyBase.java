@@ -2,21 +2,21 @@
 import java.util.*;
 
 public class anyBaseToAnyBase {
-
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        int sourceBase = scn.nextInt();
-        int  destBase= scn.nextInt();
-        int ares = 0;
-        if ( sourceBase == 10){
-            ares = dectoAnyBase(n , destBase);
+        try( Scanner scn = new Scanner(System.in) ){
+            int n = scn.nextInt();
+            int sourceBase = scn.nextInt();
+            int  destBase= scn.nextInt();
+            int ares = 0;
+            if ( sourceBase == 10){
+                ares = dectoAnyBase(n , destBase);
+            }
+            else{
+                int res = anyBaseToDecimal(n,sourceBase);
+                ares = dectoAnyBase(res,destBase);
+            }
+            System.out.println(ares);
         }
-        else{
-            int res = anyBaseToDecimal(n,sourceBase);
-            ares = dectoAnyBase(res,destBase);
-        }
-        System.out.println(ares);
     }
 
     public static int anyBaseToDecimal(int n , int b ){
