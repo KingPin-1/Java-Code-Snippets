@@ -1,5 +1,47 @@
 import java.util.*;
 
+// Check alternate rank one below --> this one has get connected components counter in-built
+class UnionFind {
+    List<Integer> parent = new ArrayList<>();
+    List<Integer> size = new ArrayList<>();
+    int cnt;
+    public UnionFind(int n){        // Constructor
+        cnt = n;
+        for( int i = 0 ; i <= n ; i++ ) {
+            parent.add(i);
+            size.add(1);
+        }
+    }
+    public int find(int u){
+        if( u == parent.get(u) )
+            return u;
+        int ultimate_parent = find(parent.get(u));
+        parent.set(u,ultimate_parent);
+        return ultimate_parent;
+    }
+    
+    public void union(int u , int v){
+        int ult_u = find(u);
+        int ult_v = find(v);
+        if( ult_v == ult_u )
+            return;
+        if( size.get(ult_v) < size.get(ult_u) ) {
+            parent.set(ult_v, ult_u);
+            size.set(ult_u,size.get(ult_u) + size.get(ult_v));
+        }
+        else{
+            parent.set(ult_u, ult_v);
+            size.set(ult_v,size.get(ult_u) + size.get(ult_v));
+        }
+        cnt--;
+    }
+    
+    public int getComponents(){
+        return cnt;
+    } 
+}
+
+
 class UnionFind {
     List<Integer> rank = new ArrayList<>();
     List<Integer> parent = new ArrayList<>();
